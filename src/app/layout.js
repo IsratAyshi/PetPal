@@ -1,8 +1,12 @@
+import dns from "dns/promises";
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 import { Geist, Geist_Mono, Inter, Londrina_Solid } from "next/font/google";
 import "./globals.css";
 
 import { Weight } from "lucide-react";
 import { Providers } from "./providers";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +39,7 @@ export default function RootLayout({ children }) {
     >
       <body className={`min-h-full flex flex-col`}>
         <Providers>
+        <ToastContainer />
         {children}
         </Providers>
         </body>

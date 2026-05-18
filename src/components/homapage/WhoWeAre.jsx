@@ -18,7 +18,7 @@ const WhoWeAre = () => {
             <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
                 {/* Left Image Section */}
                 <div className="relative group md:w-7/12 md:mx-auto lg:w-full">
-                    <div className="relative aspect-square rounded-[40px] overflow-hidden bg-[#FFD9C8] dark:bg-[#1E1A17]">
+                    <div className="relative aspect-square rounded-[40px] overflow-hidden bg-[#FFD9C8] ">
                         <Image
                             src="/assets/leftImg2.png"
                             alt="pets"

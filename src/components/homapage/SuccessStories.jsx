@@ -32,11 +32,11 @@ const SuccessStories = () => {
             />
 
             <div className=" mb-16">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4b2e2e] mb-4">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4b2e2e] dark:text-[#FFE8D6] mb-4">
                     Happy Pals & Success Stories
                 </h2>
 
-                <p className="text-[#6d5d5d] text-lg">
+                <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg">
                     Real stories from loving families and their adorable companions.
                 </p>
             </div>

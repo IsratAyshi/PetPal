@@ -8,8 +8,8 @@ import { RiInstagramFill } from 'react-icons/ri';
 
 const Footer = () => {
     return (
-        <div className="bg-[#FFF6E5]">
-            <footer className="bg-[#EAAC8E] text-[#4b2e2e] px-6 md:px-16 py-10 rounded-t-4xl">
+        <div className="bg-[#FFF6E5] dark:bg-[#1E1A17]">
+            <footer className="bg-[#EAAC8E] text-[#4b2e2e] dark:bg-[#7A3E28] dark:text-[#FFE8D6] px-6 md:px-16 py-10 rounded-t-4xl">
                 <div className="container mx-auto">
                     <div className="mb-10">
                         <h1 className="text-6xl md:text-7xl font-bold text-white font-londrina-solid tracking-wider">

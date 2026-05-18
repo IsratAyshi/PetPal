@@ -5,20 +5,20 @@ import { Heart, PawPrint, Users, HandHeart, Home } from "lucide-react";
 
 const WhoWeAre = () => {
     return (
-        <section id="whoWeAre" className="relative bg-[#FFF6E5] overflow-hidden py-30 px-6">
+        <section id="whoWeAre" className="relative bg-[#FFF6E5] dark:bg-[#1E1A17] overflow-hidden py-30 px-6">
 
             <Image
                 src="/assets/Union.png"
                 alt="Union Background"
                 width={1600}
                 height={300}
-                className="w-full h-auto absolute top-0 left-0 opacity-90"
+                className="w-full h-auto absolute top-0 left-0 opacity-90 dark:opacity-72"
             />
 
             <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
                 {/* Left Image Section */}
                 <div className="relative group md:w-7/12 md:mx-auto lg:w-full">
-                    <div className="relative aspect-square rounded-[40px] overflow-hidden l bg-[#FFD9C8]">
+                    <div className="relative aspect-square rounded-[40px] overflow-hidden bg-[#FFD9C8] dark:bg-[#1E1A17]">
                         <Image
                             src="/assets/leftImg2.png"
                             alt="pets"
@@ -43,21 +43,21 @@ const WhoWeAre = () => {
                             About PetPal
                         </span>
 
-                        <h2 className="text-4xl sm:text-5xl font-extrabold text-[#4b2e2e] leading-tight mb-6">
+                        <h2 className="text-4xl sm:text-5xl font-extrabold text-[#4b2e2e] dark:text-[#FFE8D6] leading-tight mb-6">
                             More Than Adoption, <br></br>
-                            <span className="text-[#ff7f50] italic">
+                            <span className="text-[#ff7f50] dark:text-[#FFAA80] italic">
                                 {" "}
                                 We Create Families
                             </span>
                         </h2>
 
-                        <p className="text-[#6d5d5d] text-lg leading-relaxed mb-4">
+                        <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg leading-relaxed mb-4">
                             PetPal is a loving space where animals and humans discover each
                             other. We help rescued and homeless pets find caring families,
                             safe homes, and a fresh start filled with affection.
                         </p>
 
-                        <p className="text-[#6d5d5d] text-lg leading-relaxed">
+                        <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg leading-relaxed">
                             From playful companions to gentle friends, every pet deserves
                             warmth, care, and a place to belong — and we’re here to make that
                             connection possible.
@@ -130,7 +130,7 @@ const WhoWeAre = () => {
                 alt="Union Background"
                 width={1600}
                 height={300}
-                className="w-full h-auto absolute bottom-0 left-0 opacity-90"
+                className="w-full h-auto absolute bottom-0 left-0 opacity-90 dark:opacity-72"
             />
         </section>
     );

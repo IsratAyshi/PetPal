@@ -3,13 +3,13 @@ import { Heart, ShieldCheck, Birdhouse } from "lucide-react";
 
 const WhyAdopt = () => {
     return (
-        <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto bg-white">
+        <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto ">
 
             <div className="text-center mb-16">
-                <h2 className="text-4xl sm:text-5xl font-extrabold text-[#4b2e2e] mb-3">
+                <h2 className="text-4xl sm:text-5xl font-extrabold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
                     Why Adopt a Pet?
                 </h2>
-                <p className="text-[#6d5d5d] text-lg">
+                <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg">
                     The benefits go beyond just bringing a new friend home.
                 </p>
             </div>
@@ -21,11 +21,11 @@ const WhyAdopt = () => {
                         <Birdhouse className="text-[#ff7f50]" size={28} />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-[#4b2e2e] mb-3">
+                    <h3 className="text-2xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
                         Save a Life
                     </h3>
 
-                    <p className="text-[#6d5d5d] leading-relaxed">
+                    <p className="text-[#6d5d5d] dark:text-[#F0CAA5] leading-relaxed">
                         Every adoption creates space for another animal in need, giving them a second chance at life and love.
                     </p>
                 </div>
@@ -36,11 +36,11 @@ const WhyAdopt = () => {
                         <Heart className="text-[#ff7f50]" size={28} />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-[#4b2e2e] mb-3">
+                    <h3 className="text-2xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
                         Unconditional Love
                     </h3>
 
-                    <p className="text-[#6d5d5d] leading-relaxed">
+                    <p className="text-[#6d5d5d] dark:text-[#F0CAA5] leading-relaxed">
                         Experience pure companionship that brings comfort, joy, and emotional support into your everyday life.
                     </p>
                 </div>
@@ -51,11 +51,11 @@ const WhyAdopt = () => {
                         <ShieldCheck className="text-[#ff7f50]" size={28} />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-[#4b2e2e] mb-3">
+                    <h3 className="text-2xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
                         Fully Vetted
                     </h3>
 
-                    <p className="text-[#6d5d5d] leading-relaxed">
+                    <p className="text-[#6d5d5d] dark:text-[#F0CAA5] leading-relaxed">
                         All pets are vaccinated, health-checked, and prepared to safely join their forever families.
                     </p>
                 </div>

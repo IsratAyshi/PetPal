@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono, Inter, Londrina_Solid } from "next/font/google";
 import "./globals.css";
-import { MainNavbar } from "@/components/shared/Navbar";
+
 import { Weight } from "lucide-react";
-import Footer from "@/components/shared/Footer";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +30,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${londrinaSolid.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col`}>
-        <MainNavbar/>
+        <Providers>
         {children}
-        <Footer />
+        </Providers>
         </body>
     </html>
   );

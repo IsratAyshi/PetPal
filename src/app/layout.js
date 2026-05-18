@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Londrina_Solid } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Londrina_Solid } from "next/font/google";
 import "./globals.css";
 import { MainNavbar } from "@/components/shared/Navbar";
 import { Weight } from "lucide-react";
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${londrinaSolid.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className={`min-h-full flex flex-col`}>
         <MainNavbar/>
         {children}
         <Footer />

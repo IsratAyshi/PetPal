@@ -35,7 +35,7 @@ const SignUpPage = () => {
 
         })
 
-        console.log(data, error);
+        // console.log(data, error);
         if (data) {
             toast.success("Signed up successfully!");
             redirect("/login")
@@ -46,17 +46,17 @@ const SignUpPage = () => {
 
     };
 
-    // const handleGoogleSignin = async () => {
-    //     const { data, error } = await authClient.signIn.social({
-    //         provider: "google",
-    //     })
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        })
 
-    // }
+    }
 
     return (
-        <div className='bg-[#ffdacb] dark:bg-[#1E1A17] flex justify-between'>
+        <div className='bg-[#ffdacb] dark:bg-[#1E1A17] md:flex justify-between'>
 
-            <div className="flex-1 flex flex-col gap-8 items-center justify-center">
+            <div className="hidden md:flex-1 md:flex flex-col gap-8 items-center justify-center">
                 <h1 className="text-4xl md:text-5xl font-semibold font-londrina-solid tracking-widest text-center leading-relaxed text-[#4b2e2e] dark:text-[#FFE8D6]">
                     <span className="text-[#ff7f50] dark:text-[#FFAA80]">Happiness</span>
                     <br /> Starts Here
@@ -72,7 +72,7 @@ const SignUpPage = () => {
 
             </div>
 
-            <div className="max-w-7xl p-20 flex flex-col justify-center bg-white dark:bg-[#6d5d5d]/40 my-5 rounded-l-4xl flex-1">
+            <div className="max-w-7xl py-10 md:p-20 flex flex-col justify-center bg-white dark:bg-[#6d5d5d]/40 my-5 md:rounded-l-4xl flex-1">
 
                 <div className="my-6">
                     <h1 className="text-3xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] text-center">Sign Up to PetPal</h1>
@@ -188,7 +188,7 @@ const SignUpPage = () => {
 
                     <div className="w-full">
                         <Button
-                            // onClick={handleGoogleSignin}
+                            onClick={handleGoogleSignin}
                             type="reset" variant="outline"
                             className="rounded-none w-full">
                             <FcGoogle />

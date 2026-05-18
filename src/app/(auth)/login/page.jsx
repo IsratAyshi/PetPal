@@ -4,8 +4,9 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Image from 'next/image';
 import { FcGoogle } from 'react-icons/fc';
-// import { authClient } from '@/lib/auth-client';
-// import { redirect } from 'next/navigation';
+import { authClient } from '@/lib/auth-client';
+import { redirect } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
 
@@ -13,41 +14,36 @@ const LoginPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        // const formData = new FormData(e.currentTarget);
-        // const user = Object.fromEntries(formData.entries());
-
+        const formData = new FormData(e.currentTarget);
+        const user = Object.fromEntries(formData.entries());
         // console.log(user);
 
-        // const { data, error } = await authClient.signUp.email({
-        //     name: user.name,
-        //     image: user.image,
-        //     email: user.email,
-        //     password: user.password,
+        const { data, error } = await authClient.signIn.email({
+            email: user.email,
+            password: user.password
+        })
 
-        // })
+        if (data) {
+            toast.success("Signed In Successfully");
+            redirect("/")
+        }
+        if (error) {
+            toast.error(error.message)
+        }
+    }
 
-        // // console.log(data, error);
-        // if (data) {
-        //     alert("Account created successfully");
-        //     redirect("/login")
-        // }
-        // if (error) {
-        //     alert(error.message);
-        // }
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        })
 
-    };
+    }
 
-    // const handleGoogleSignin = async () => {
-    //     const { data, error } = await authClient.signIn.social({
-    //         provider: "google",
-    //     })
-
-    // }
 
     return (
         <div className='bg-[#ffdacb] dark:bg-[#1E1A17] flex justify-between'>
 
-            <div className="flex-1 flex flex-col gap-8 items-center justify-center">
+            <div className="hidden md:flex-1 md:flex flex-col gap-8 items-center justify-center">
                 <h1 className="text-4xl md:text-5xl font-semibold font-londrina-solid tracking-widest text-center leading-relaxed text-[#4b2e2e] dark:text-[#FFE8D6]">
                     <span className="text-[#ff7f50] dark:text-[#FFAA80]">Happiness</span>
                     <br /> Starts Here
@@ -63,7 +59,7 @@ const LoginPage = () => {
 
             </div>
 
-            <div className="max-w-7xl p-20 flex flex-col justify-center bg-white dark:bg-[#6d5d5d]/40 my-5 rounded-l-4xl flex-1">
+            <div className="max-w-7xl py-10 md:p-20 flex flex-col justify-center bg-white dark:bg-[#6d5d5d]/40 my-5 md:rounded-l-4xl flex-1">
 
                 <div className="my-6">
                     <h1 className="text-3xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] text-center">Login to PetPal</h1>
@@ -132,7 +128,7 @@ const LoginPage = () => {
 
                     <div className="w-full">
                         <Button
-                            // onClick={handleGoogleSignin}
+                            onClick={handleGoogleSignin}
                             type="reset" variant="outline"
                             className="rounded-none w-full">
                             <FcGoogle />

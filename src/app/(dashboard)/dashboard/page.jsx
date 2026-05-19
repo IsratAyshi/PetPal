@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 
 const DashboardPage = () => {
-    redirect("/dashboard/add-pet");
+    redirect("/dashboard/my-listings");
 };
 
 export default DashboardPage;

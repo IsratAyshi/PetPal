@@ -51,9 +51,8 @@ const AddPetPage = () => {
             <main className="flex-1 p-6 lg:p-10 overflow-y-auto">
                 <div className="max-w-4xl mx-auto">
 
-                    {/* Page Header */}
                     <div className="mb-8">
-                        <h2 className="text-3xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] font-londrina-solid tracking-wide">
+                        <h2 className="text-3xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] font-londrina-solid tracking-wider">
                             Add New Pet
                         </h2>
                         <p className="text-slate-500 dark:text-[#C4A99A] mt-1 text-sm">
@@ -61,7 +60,7 @@ const AddPetPage = () => {
                         </p>
                     </div>
 
-                    {/* Form Card */}
+                    {/* Form*/}
                     <div className="bg-white dark:bg-[#2A1F1A] border border-[#EAAC8E]/40 dark:border-[#3A2E28] rounded-2xl shadow-sm">
                         <Form onSubmit={onSubmit} className="p-8 space-y-8">
 

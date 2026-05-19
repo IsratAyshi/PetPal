@@ -15,6 +15,12 @@ const MyListingsPage = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-pets/${user?.id}`);
     const myListings = await res.json();
 
+    const availableListings = myListings.filter(
+        (listing) => listing.adoptionStatus === "available");
+
+    const adoptedListings = myListings.filter(
+        (listing) => listing.adoptionStatus === "adopted");
+
     return (
         <div className="flex min-h-screen">
             <DashboardSidebar />
@@ -28,6 +34,49 @@ const MyListingsPage = async () => {
                         <p className="text-slate-500 dark:text-[#C4A99A] mt-1 text-sm">
                             Manage your pet listings and adoption requests here.
                         </p>
+                    </div>
+
+                    {/* Stat Cards */}
+                    <div className="grid grid-cols-1  md:grid-cols-3 gap-10">
+                        {/* Card 1 */}
+                        <div className="p-8 bg-[#FFD9C8]/40 rounded-3xl flex flex-col items-center text-center justify-center transition-all duration-300 hover:scale-[1.03] shadow-sm hover:shadow-lg">
+
+
+                            <h3 className="text-5xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
+                                {myListings.length}
+
+                            </h3>
+
+                            <h1 className="text-[#6d5d5d] dark:text-[#F0CAA5] ">
+                                Total Listings
+                            </h1>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="p-8 bg-[#FFE7D6]/40 rounded-3xl flex flex-col items-center text-center justify-center transition-all duration-300 hover:scale-[1.03] shadow-sm hover:shadow-lg">
+
+
+                            <h3 className="text-5xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
+                                {availableListings.length}
+                            </h3>
+
+                            <p className="text-[#6d5d5d] dark:text-[#F0CAA5] leading-relaxed">
+                                Available for Adoption
+                            </p>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="p-8 bg-[#F0CAA5]/40 rounded-3xl flex flex-col items-center text-center justify-center transition-all duration-300 hover:scale-[1.03] shadow-sm hover:shadow-lg">
+
+
+                            <h3 className="text-5xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-3">
+                                {adoptedListings.length}
+                            </h3>
+
+                            <p className="text-[#6d5d5d] dark:text-[#F0CAA5] leading-relaxed">
+                                Adopted
+                            </p>
+                        </div>
                     </div>
 
 

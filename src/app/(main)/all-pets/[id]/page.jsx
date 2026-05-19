@@ -6,6 +6,7 @@ import {
     PawPrint
 } from "lucide-react";
 import Link from "next/link";
+import AdoptionForm from '@/components/AdoptionForm';
 
 
 const speciesEmoji = {
@@ -200,23 +201,12 @@ const PetDetailsPage = async ({ params }) => {
 
                     {/* Right side Adoption Form */}
                     <div className="lg:sticky lg:top-24">
-                        <div className="bg-white dark:bg-[#2A1F1A] rounded-2xl border border-[#EAAC8E]/40 dark:border-[#3A2E28] shadow-sm p-6">
+                        <div
+                            className="md:max-w-md
+                        bg-white dark:bg-[#2A1F1A] rounded-2xl border border-[#EAAC8E]/40 dark:border-[#3A2E28] shadow-sm p-6">
 
-                            Adoption form
-                            {/* Form Header */}
-                            {/* <div className="mb-5 flex items-start gap-2">
-                                <Heart className="w-5 h-5 text-[#ff7f50] dark:text-[#FFAA80] mt-0.5 flex-shrink-0" />
-                                <div>
-                                    <h2 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] font-londrina-solid tracking-wide">
-                                        Request to Adopt {pet.petName}
-                                    </h2>
-                                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-                                        Fill out this form and the owner will review your request.
-                                    </p>
-                                </div>
-                            </div>
+                            <AdoptionForm pet={pet} />
 
-                            <AdoptionForm pet={pet} /> */}
 
                         </div>
                     </div>

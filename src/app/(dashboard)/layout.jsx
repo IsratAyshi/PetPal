@@ -6,11 +6,10 @@ import Footer from "@/components/shared/Footer";
 
 const DashboardLayout = ({ children }) => {
     return (
-        <>
+        <div >
             <MainNavbar />
             {children}
-
-        </>
+        </div>
     );
 };
 

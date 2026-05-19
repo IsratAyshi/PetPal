@@ -4,3 +4,7 @@
 @theme {
   --font-londrina-solid: var(--font-londrina-solid);
 }
+
+:root {
+    color-scheme: light;
+}

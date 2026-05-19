@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
+      // style={{ colorScheme: "light" }}
       className={`${geistSans.variable} ${geistMono.variable} ${londrinaSolid.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col`}>

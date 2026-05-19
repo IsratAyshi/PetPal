@@ -66,7 +66,7 @@ export function MainNavbar() {
 
                         <Link href="/my-requests" className="font-medium text-slate-700 hover:text-[#b36639] dark:text-[#F5E6DC] dark:hover:text-[#FF9B73]  transition-colors">My Requests</Link>
 
-                        <Link href="/add-pets" className="font-medium text-slate-700 hover:text-[#b36639] dark:text-[#F5E6DC] dark:hover:text-[#FF9B73]  transition-colors">Add Pets</Link>
+                        <Link href="/dashboard/add-pet" className="font-medium text-slate-700 hover:text-[#b36639] dark:text-[#F5E6DC] dark:hover:text-[#FF9B73]  transition-colors">Add Pets</Link>
 
                         <Link
                             href="/#faq"
@@ -163,7 +163,7 @@ export function MainNavbar() {
 
                     <Link href="/my-requests" className="block px-4 py-3 text-base font-medium text-slate-900 dark:text-slate-100 dark:hover:bg-[#2A1F1A] hover:bg-slate-50 rounded-xl">My Requests</Link>
 
-                    <Link href="/add-pets" className="block px-4 py-3 text-base font-medium text-slate-900 dark:text-slate-100 dark:hover:bg-[#2A1F1A] hover:bg-slate-50 rounded-xl">Add Pets</Link>
+                    <Link href="/dashboard/add-pet" className="block px-4 py-3 text-base font-medium text-slate-900 dark:text-slate-100 dark:hover:bg-[#2A1F1A] hover:bg-slate-50 rounded-xl">Add Pets</Link>
 
                     <Link href="/#faq" className="block px-4 py-3 text-base font-medium text-slate-900 dark:text-slate-100 dark:hover:bg-[#2A1F1A] hover:bg-slate-50 rounded-xl">FAQ</Link>
 

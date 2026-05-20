@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { Trash } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -10,10 +11,14 @@ const DeletePetModal = ({ pet }) => {
     const { _id, petName } = pet;
 
     const handleDelete = async () => {
+
+        const { data: tokenData } = await authClient.token();
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${_id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
             },
         });
         const data = await res.json();

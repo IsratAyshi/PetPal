@@ -3,6 +3,7 @@ import { TextField, Label, Input, FieldError, TextArea, Form, Button } from "@he
 import { Heart, CalendarDays, User, Mail, TriangleAlert, LoaderPinwheel, BadgeCheck, HeartCrack } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const AdoptionForm = ({ pet }) => {
 
@@ -12,10 +13,18 @@ const AdoptionForm = ({ pet }) => {
     const [requestStatus, setRequestStatus] = useState(null);
 
 
-
     useEffect(() => {
         const fetchRequestStatus = async () => {
-            const res = await fetch(`http://localhost:5000/all-adoption-requests/check?petId=${pet._id}&requesterId=${user?.id}`);
+
+            const { data: tokenData } = await authClient.token();
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/check?petId=${pet._id}&requesterId=${user?.id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${tokenData?.token}`,
+                    },
+                }
+            );
 
             const data = await res.json();
             // console.log(data);
@@ -61,11 +70,14 @@ const AdoptionForm = ({ pet }) => {
         };
 
         // console.log(requestData);
+        const { data: tokenData } = await authClient.token();
 
-        const res = await fetch("http://localhost:5000/all-adoption-requests", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests`, {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
+
             },
             body: JSON.stringify(requestData)
         });

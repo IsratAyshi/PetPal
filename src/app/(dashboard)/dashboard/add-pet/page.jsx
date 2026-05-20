@@ -28,11 +28,14 @@ const AddPetPage = () => {
         };
         // console.log(petData);
 
+        const { data: tokenData } = await authClient.token();
+
         // api call to add pet
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify(petData),
         })

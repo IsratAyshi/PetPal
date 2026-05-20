@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import AdoptionForm from '@/components/AdoptionForm';
-
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const speciesEmoji = {
     Dog: "🐶",
@@ -22,8 +23,18 @@ const speciesEmoji = {
 const PetDetailsPage = async ({ params }) => {
 
     const { id } = await params;
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    });
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${id}`, { cache: "no-store" });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${id}`,
+        {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        },
+        { cache: "no-store" }
+    );
 
     if (!res.ok) {
         throw new Error("Failed to fetch pet details");
@@ -99,7 +110,7 @@ const PetDetailsPage = async ({ params }) => {
                                 priority
                             />
                             {/* Available badge */}
-                            <div className={`absolute top-4 left-4 ${pet.adoptionStatus === "Available" ? "bg-green-600" : "bg-[#E94043]"} text-white text-xs font-semibold px-3 py-2 rounded-full capitalize shadow`}>
+                            <div className={`absolute top-4 left-4 ${pet.adoptionStatus == "available" ? "bg-green-600" : "bg-[#E94043]"} text-white text-xs font-semibold px-3 py-2 rounded-full capitalize shadow`}>
                                 {pet.adoptionStatus}
                             </div>
                         </div>

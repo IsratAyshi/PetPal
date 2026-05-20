@@ -24,13 +24,29 @@ const MyRequestsPage = async () => {
     const requester = session?.user;
     // console.log(requester);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/my-requests/${requester?.id}`);
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    });
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/my-requests/${requester?.id}`
+        , {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        }
+    );
     const myRequests = await res.json();
     // console.log(myRequests);
 
     const requestWithPetInfo = [];
     for (const request of myRequests) {
-        const petRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${request.petId}`);
+        const petRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${request.petId}`,
+            {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
         const pet = await petRes.json();
         requestWithPetInfo.push({ ...request, pet });
     }

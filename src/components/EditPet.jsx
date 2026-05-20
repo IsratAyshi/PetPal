@@ -19,14 +19,15 @@ const EditPetModal = ({ pet }) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData.entries());
+        // console.log(updatedData);
 
-
-        // conSsole.log(updatedData);
+        const { data: tokenData } = await authClient.token();
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
+                , authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(updatedData)
         });

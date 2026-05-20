@@ -5,6 +5,7 @@ import { Button, Modal } from '@heroui/react';
 import { Heart, Loader2 } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { authClient } from '@/lib/auth-client';
 
 
 const PetRequestsModal = ({ pet }) => {
@@ -15,7 +16,16 @@ const PetRequestsModal = ({ pet }) => {
 
     useEffect(() => {
         const fetchAdoptionRequests = async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/this-pet-requests/${pet._id}`);
+            const { data: tokenData } = await authClient.token();
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/this-pet-requests/${pet._id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${tokenData?.token}`,
+                    },
+                }
+            );
+
             const data = await res.json();
             setAdoptRequests(data);
         };
@@ -24,17 +34,31 @@ const PetRequestsModal = ({ pet }) => {
     }, [pet._id]);
 
     const loadAdoptionRequests = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/this-pet-requests/${pet._id}`);
+
+        const { data: tokenData } = await authClient.token();
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/this-pet-requests/${pet._id}`,
+            {
+                headers: {
+                    authorization: `Bearer ${tokenData?.token}`,
+                },
+            }
+        );
+
         const data = await res.json();
         setAdoptRequests(data);
     };
 
 
     const handleApprove = async (requestId, petId) => {
+
+        const { data: tokenData } = await authClient.token();
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/${requestId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify({ status: "approved" }),
         });
@@ -44,7 +68,10 @@ const PetRequestsModal = ({ pet }) => {
         if (updatedRequest.modifiedCount > 0) {
             const res2 = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${petId}`, {
                 method: "PATCH",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${tokenData?.token}`
+                },
                 body: JSON.stringify({ adoptionStatus: "adopted" }),
             });
             const updatedPet = await res2.json();
@@ -52,7 +79,10 @@ const PetRequestsModal = ({ pet }) => {
 
             const res3 = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/reject-others/${requestId}`, {
                 method: "PATCH",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${tokenData?.token}`
+                },
                 body: JSON.stringify({ petId }),
             });
             const updatedOtherRequests = await res3.json();
@@ -65,10 +95,14 @@ const PetRequestsModal = ({ pet }) => {
     }
 
     const handleReject = async (requestId) => {
+
+        const { data: tokenData } = await authClient.token();
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/${requestId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify({ status: "rejected" }),
         });

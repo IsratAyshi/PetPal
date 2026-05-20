@@ -44,6 +44,7 @@ lucide-react
 
 ```bash
 express
+node.js
 mongodb
 cors
 jwt 

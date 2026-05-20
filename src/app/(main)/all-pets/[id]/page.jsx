@@ -10,6 +10,28 @@ import AdoptionForm from '@/components/AdoptionForm';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
+export const generateMetadata = async ({ params }) => {
+    const { id } = await params;
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    });
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${id}`,
+        {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        },
+        { cache: "no-store" }
+    );
+    const pet = await res.json();
+
+    return {
+        title: pet.petName,
+        description: pet.description
+    }
+}
+
 const speciesEmoji = {
     Dog: "🐶",
     Cat: "🐱",

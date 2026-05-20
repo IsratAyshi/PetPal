@@ -9,6 +9,7 @@ import { PlusCircle } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 
+
 const AddPetPage = () => {
 
     const { data: session } = authClient.useSession();

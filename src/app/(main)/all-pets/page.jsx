@@ -2,6 +2,10 @@ import React from 'react';
 import PetCard from '@/components/shared/PetCard';
 import FilterAndSearch from '@/components/FilterAndSearch';
 
+export const metadata = {
+    title: "PetPal | All Pets",
+    description: "Find your perfect companion from our curated collection of adorable pets.",
+};
 
 const AllPetsPage = async ({ searchParams }) => {
     const params = await searchParams;

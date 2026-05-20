@@ -8,6 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata = {
+    title: "PetPal | My Adoption Requests",
+
+};
 
 const statusColors = {
     pending: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-800",

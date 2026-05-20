@@ -4,6 +4,10 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import React from 'react';
 
+export const metadata = {
+    title: "PetPal | My Listings",
+};
+
 const MyListingsPage = async () => {
 
     const session = await auth.api.getSession({

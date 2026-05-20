@@ -71,7 +71,13 @@ const AdoptionForm = ({ pet }) => {
         });
 
         const adoptionRequest = await res.json();
-        console.log(adoptionRequest);
+        // console.log(adoptionRequest);
+        if (adoptionRequest.insertedId) {
+            toast.success("Request sent successfully!");
+        }
+        else {
+            toast.error("Failed to send request!");
+        }
 
         if (res.ok) {
             setRequestStatus("pending");

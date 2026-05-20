@@ -4,10 +4,14 @@ import RequestCard from './RequestCard';
 import { Button, Modal } from '@heroui/react';
 import { Heart, Loader2 } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+
 
 const PetRequestsModal = ({ pet }) => {
 
     const [adoptRequests, setAdoptRequests] = useState([]);
+
+    const router = useRouter();
 
     useEffect(() => {
         const fetchAdoptionRequests = async () => {
@@ -19,6 +23,12 @@ const PetRequestsModal = ({ pet }) => {
         fetchAdoptionRequests();
     }, [pet._id]);
 
+    const loadAdoptionRequests = async () => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/this-pet-requests/${pet._id}`);
+        const data = await res.json();
+        setAdoptRequests(data);
+    };
+
 
     const handleApprove = async (requestId, petId) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/${requestId}`, {
@@ -29,7 +39,7 @@ const PetRequestsModal = ({ pet }) => {
             body: JSON.stringify({ status: "approved" }),
         });
         const updatedRequest = await res.json();
-        console.log(updatedRequest);
+        // console.log(updatedRequest);
 
         if (updatedRequest.modifiedCount > 0) {
             const res2 = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets/${petId}`, {
@@ -38,7 +48,7 @@ const PetRequestsModal = ({ pet }) => {
                 body: JSON.stringify({ adoptionStatus: "adopted" }),
             });
             const updatedPet = await res2.json();
-            console.log(updatedPet);
+            // console.log(updatedPet);
 
             const res3 = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/reject-others/${requestId}`, {
                 method: "PATCH",
@@ -46,8 +56,10 @@ const PetRequestsModal = ({ pet }) => {
                 body: JSON.stringify({ petId }),
             });
             const updatedOtherRequests = await res3.json();
-            console.log(updatedOtherRequests);
+            // console.log(updatedOtherRequests);
 
+            loadAdoptionRequests();
+            router.refresh();
             toast.success("Request approved successfully! Pet marked as adopted.");
         }
     }
@@ -61,7 +73,12 @@ const PetRequestsModal = ({ pet }) => {
             body: JSON.stringify({ status: "rejected" }),
         });
         const updatedRequest = await res.json();
-        toast.error("Request rejected successfully!");
+
+        if (updatedRequest.modifiedCount > 0) {
+            loadAdoptionRequests();
+            router.refresh();
+            toast.error("Request rejected successfully!");
+        }
     }
 
 

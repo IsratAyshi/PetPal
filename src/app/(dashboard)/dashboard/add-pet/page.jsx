@@ -40,8 +40,11 @@ const AddPetPage = () => {
         // console.log("after POST call: ", data);
         if (data.insertedId) {
             toast.success("Pet listed successfully!");
+            redirect("/all-pets");
         }
-        redirect("/all-pets");
+        else {
+            toast.error("Failed to list pet!");
+        }
     }
 
     return (

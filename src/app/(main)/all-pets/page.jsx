@@ -1,15 +1,30 @@
 import React from 'react';
-import { ListBox, Select } from '@heroui/react';
 import PetCard from '@/components/shared/PetCard';
-import { Search } from 'lucide-react';
+import FilterAndSearch from '@/components/FilterAndSearch';
 
-const AllPetsPage = async () => {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets`);
+const AllPetsPage = async ({ searchParams }) => {
+    const params = await searchParams;
+
+    const search = params?.search || "";
+    const species = params?.species || "";
+
+    const query = new URLSearchParams();
+    if (search) query.append("search", search);
+    if (species) query.append("species", species);
+
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets`);
+    // const pets = await res.json();
+    // console.log(pets);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets?${query.toString()}`,
+        {
+            cache: "no-store"
+        });
     const pets = await res.json();
     // console.log(pets);
 
-    const species = ["Dog", "Cat", "Bird", "Rabbit", "Fish", "Hamster", "Other"];
+
 
     return (
         <div className="min-h-screen bg-[#FFF6E5] dark:bg-[#1C1410]">
@@ -26,45 +41,8 @@ const AllPetsPage = async () => {
 
 
                 {/* Filters */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-2 items-center">
+                <FilterAndSearch />
 
-                    {/* Search*/}
-                    <div className="md:col-span-2">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-
-                            <input
-                                type="text"
-                                placeholder="Search pets by name"
-                                className="w-full px-10 py-2 rounded-xl border border-[#EAAC8E]/50 dark:border-[#3A2E28] bg-white dark:bg-[#2A1F1A] text-slate-700 dark:text-[#F5E6DC] placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#EAAC8E] dark:focus:ring-[#7A3E28] text-sm"
-                            />
-                        </div>
-                    </div>
-
-
-                    {/* Species Filter */}
-                    <Select placeholder="SPECIES" aria-label="Species">
-                        <Select.Trigger className="border border-[#EAAC8E]/50 dark:border-[#3A2E28] rounded-xl bg-white dark:bg-[#2A1F1A] text-slate-700 dark:text-[#F5E6DC]">
-                            <Select.Value />
-                            <Select.Indicator />
-                        </Select.Trigger>
-                        <Select.Popover>
-                            <ListBox>
-                                {
-                                    species.map((s) =>
-                                    (<ListBox.Item
-                                        key={s} id={s}
-                                        textValue={s}>
-                                        {s}
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    ))
-                                }
-                            </ListBox>
-                        </Select.Popover>
-                    </Select>
-
-                </div>
 
 
                 {pets.length === 0 ? (

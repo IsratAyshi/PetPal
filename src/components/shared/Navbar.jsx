@@ -8,6 +8,8 @@ import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
 import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+
 
 export function MainNavbar() {
 
@@ -23,6 +25,7 @@ export function MainNavbar() {
 
     const handleLogout = async () => {
         await authClient.signOut();
+        redirect("/");
     }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);

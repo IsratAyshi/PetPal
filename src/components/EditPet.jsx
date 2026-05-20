@@ -37,6 +37,9 @@ const EditPetModal = ({ pet }) => {
             router.refresh();
             toast.success("Pet details updated successfully!");
         }
+        else {
+            toast.error("No changes were made!");
+        }
     }
 
     return (

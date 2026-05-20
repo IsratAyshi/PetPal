@@ -32,7 +32,7 @@ const PetCard = ({ pet }) => {
             router.push("/login");
             return;
         }
-        router.push(`/pets/${pet._id}`);
+        router.push(`/all-pets/${pet._id}`);
     };
 
     return (

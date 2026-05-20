@@ -22,7 +22,7 @@ const MyRequestsPage = async () => {
     });
     // console.log(session);
     const requester = session?.user;
-    console.log(requester);
+    // console.log(requester);
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-adoption-requests/my-requests/${requester?.id}`);
     const myRequests = await res.json();
@@ -140,7 +140,11 @@ const MyRequestsPage = async () => {
                                 </div>
                             ))
                         ) : (
-                            <p>No adoption requests found.</p>
+                            <div className="flex flex-col items-center justify-center py-20 text-center">
+                                <span className="text-6xl mb-4">🐾</span>
+                                <h3 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6]">No Adoption Requests Found. Request for a pet from our curated Pet Listings.</h3>
+
+                            </div>
                         )}
                     </div>
                 </div>

@@ -26,7 +26,7 @@ const AddPetPage = () => {
             adoptionStatus: "available",
             createdAt: new Date(),
         };
-        console.log(petData);
+        // console.log(petData);
 
         // api call to add pet
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-pets`, {

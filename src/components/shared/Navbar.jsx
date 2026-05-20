@@ -128,9 +128,7 @@ export function MainNavbar() {
                                             <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-[#EAAC8E]/50 dark:hover:bg-[#3A2820] dark:text-slate-200 flex items-center gap-3 transition-colors">
                                                 <LayoutDashboard className="w-4 h-4" /> Dashboard
                                             </Link>
-                                            <Link href="/settings" className="px-4 py-2 text-sm hover:bg-[#EAAC8E]/50 dark:hover:bg-[#3A2820] dark:text-slate-200 flex items-center gap-3 transition-colors">
-                                                <User className="w-4 h-4" /> Settings
-                                            </Link>
+
                                             <button
                                                 onClick={handleLogout}
                                                 className="px-4 py-2 text-sm text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 transition-colors text-left">

@@ -99,7 +99,7 @@ const PetDetailsPage = async ({ params }) => {
                                 priority
                             />
                             {/* Available badge */}
-                            <div className="absolute top-4 left-4 bg-green-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full capitalize shadow">
+                            <div className={`absolute top-4 left-4 ${pet.adoptionStatus === "Available" ? "bg-green-600" : "bg-[#E94043]"} text-white text-xs font-semibold px-3 py-2 rounded-full capitalize shadow`}>
                                 {pet.adoptionStatus}
                             </div>
                         </div>

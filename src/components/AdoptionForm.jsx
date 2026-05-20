@@ -1,6 +1,6 @@
 "use client";
 import { TextField, Label, Input, FieldError, TextArea, Form, Button } from "@heroui/react";
-import { Heart, CalendarDays, User, Mail, TriangleAlert, LoaderPinwheel, BadgeCheck } from "lucide-react";
+import { Heart, CalendarDays, User, Mail, TriangleAlert, LoaderPinwheel, BadgeCheck, HeartCrack } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 
@@ -117,27 +117,39 @@ const AdoptionForm = ({ pet }) => {
     }
 
     if (requestStatus === "approved") {
-        <div className="mb-5 flex flex-col items-center justify-center gap-3 text-center">
-            <div className="rounded-full bg-green-200/40 p-4">
-                <BadgeCheck className="w-15 h-15 text-green-500 dark:text-green-600" />
+        return (
+            <div className="mb-5 flex flex-col items-center justify-center gap-3 text-center">
+                <div className="rounded-full bg-green-200/40 p-4">
+                    <BadgeCheck className="w-15 h-15 text-green-500 dark:text-green-600" />
+                </div>
+                <h1 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] ">Your Request is Approved !</h1>
+                <p className="text-xs text-[#4b2e2e] dark:text-[#F5E6DC] mt-0.5 leading-relaxed max-w-sm">Your request is approved. Congrats! Hope you and your new pet have a great time together.</p>
             </div>
-            <h1 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] ">Your Request is Approved !</h1>
-            <p className="text-xs text-[#4b2e2e] dark:text-[#F5E6DC] mt-0.5 leading-relaxed max-w-sm">Your request is approved. Congrats! Hope you and your new pet have a great time together.</p>
-        </div>
+        )
     }
 
     if (requestStatus === "rejected") {
-        <div className="mb-5 flex flex-col items-center justify-center gap-3 text-center">
-            <div className="rounded-full bg-red-200/40 p-4">
-                <BadgeCheck className="w-15 h-15 text-red-500 dark:text-red-600" />
+        return (
+            <div className="mb-5 flex flex-col items-center justify-center gap-3 text-center">
+                <div className="rounded-full bg-red-200/40 p-4">
+                    <BadgeCheck className="w-15 h-15 text-red-500 dark:text-red-600" />
+                </div>
+                <h1 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] ">Your Request has been Rejected</h1>
+                <p className="text-xs text-[#4b2e2e] dark:text-[#F5E6DC] mt-0.5 leading-relaxed max-w-sm">Your request has been rejected. Check out other pet companions in our all pet listings</p>
             </div>
-            <h1 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] ">Your Request has been Rejected</h1>
-            <p className="text-xs text-[#4b2e2e] dark:text-[#F5E6DC] mt-0.5 leading-relaxed max-w-sm">Your request has been rejected. Check out other pet companions in our all pet listings</p>
-        </div>
+        )
     }
 
     if (requestStatus === "adopted") {
-        return <h1>This pet is already adopted</h1>;
+        return (
+            <div className="mb-5 flex flex-col items-center justify-center gap-3 text-center">
+                <div className="rounded-full bg-red-200/40 p-4">
+                    <HeartCrack className="w-15 h-15 text-red-500 dark:text-red-600" />
+                </div>
+                <h1 className="text-xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] ">This pet is already adopted</h1>
+                <p className="text-xs text-[#4b2e2e] dark:text-[#F5E6DC] mt-0.5 leading-relaxed max-w-sm">This pet is has found a new home. Check out other pet companions in our all pet listings</p>
+            </div>
+        )
     }
 
     return (

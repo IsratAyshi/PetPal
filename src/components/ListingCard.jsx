@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Heart, CalendarDays, } from 'lucide-react';
 import EditPetModal from './EditPet';
 import DeletePetModal from './DeletePet';
+import PetRequestsModal from './PetRequestsModal';
 
 const speciesEmoji = {
     Dog: "🐶",
@@ -66,12 +67,7 @@ const ListingCard = ({ pet }) => {
                         View Details
                     </Link>
 
-                    <button
-
-                        className="flex-1 flex items-center justify-center gap-1 text-sm font-semibold py-2 px-3 rounded-xl bg-[#EAAC8E] dark:bg-[#7A3E28] text-[#4b2e2e] dark:text-[#FFE8D6] hover:bg-[#ffa67e] dark:hover:bg-[#9B5035] transition-colors"
-                    >
-                        <Heart className="w-3.5 h-3.5" /> Requests
-                    </button>
+                    <PetRequestsModal pet={pet} />
                 </div>
 
                 <div className="flex gap-2 mt-auto pt-2">

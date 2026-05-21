@@ -38,6 +38,7 @@ tailwindcss
 next-themes
 react-toastify
 lucide-react
+framer-motion
 ```
 
 ### Backend 

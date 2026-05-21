@@ -1,6 +1,7 @@
 import React from 'react';
 import PetCard from '@/components/shared/PetCard';
 import FilterAndSearch from '@/components/FilterAndSearch';
+import AnimatedPetCard from '@/components/animation/AnimatedPetCard';
 
 export const metadata = {
     title: "PetPal | All Pets",
@@ -56,11 +57,11 @@ const AllPetsPage = async ({ searchParams }) => {
 
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <AnimatedPetCard className="grid grid-cols-1 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {pets.map((pet) => (
                             <PetCard key={pet._id} pet={pet} />
                         ))}
-                    </div>
+                    </AnimatedPetCard>
                 )}
 
             </div>

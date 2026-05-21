@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import { Quote, Star } from "lucide-react";
+import FadeUp from '../animation/FadeUp';
 
 const stories = [
     {
@@ -31,63 +32,67 @@ const SuccessStories = () => {
                 className="w-[180px] md:w-[200px] h-auto absolute top-280 right-10 md:top-160 lg:top-150 md:right-10 lg:right-50 opacity-90 rotate-12"
             />
 
-            <div className=" mb-16">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4b2e2e] dark:text-[#FFE8D6] mb-4">
-                    Happy Pals & Success Stories
-                </h2>
+            <FadeUp>
+                <div className=" mb-16">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4b2e2e] dark:text-[#FFE8D6] mb-4">
+                        Happy Pals & Success Stories
+                    </h2>
 
-                <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg">
-                    Real stories from loving families and their adorable companions.
-                </p>
-            </div>
+                    <p className="text-[#6d5d5d] dark:text-[#F0CAA5] text-lg">
+                        Real stories from loving families and their adorable companions.
+                    </p>
+                </div>
+            </FadeUp>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {stories.map((story, index) => (
-                    <div
-                        key={index}
-                        className="relative bg-[#FFF6E5] p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                    >
+            <FadeUp delay={0.1}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {stories.map((story, index) => (
                         <div
-                            className="absolute -top-5 right-6 w-14 h-14 bg-[#FFD9C8] rounded-2xl rotate-12 flex items-center justify-center shadow-md"
+                            key={index}
+                            className="relative bg-[#FFF6E5] p-8 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                         >
-                            <Quote className="text-[#ff7f50]" size={26} />
-                        </div>
-
-                        <div className="flex items-center gap-5 mb-6">
-                            <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
-                                <Image
-                                    src={story.image}
-                                    alt={story.name}
-                                    fill
-                                    className="object-cover"
-                                />
+                            <div
+                                className="absolute -top-5 right-6 w-14 h-14 bg-[#FFD9C8] rounded-2xl rotate-12 flex items-center justify-center shadow-md"
+                            >
+                                <Quote className="text-[#ff7f50]" size={26} />
                             </div>
 
-                            <div>
-                                <h4 className="text-2xl font-bold text-[#4b2e2e] mb-1 font-londrina-solid tracking-wider">
-                                    {story.name}
-                                </h4>
+                            <div className="flex items-center gap-5 mb-6">
+                                <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
+                                    <Image
+                                        src={story.image}
+                                        alt={story.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
 
-                                {/* Stars */}
-                                <div className="flex items-center gap-1">
-                                    {[...Array(5)].map((star, index) => (
-                                        <Star
-                                            key={index}
-                                            size={16}
-                                            className="fill-[#ffb347] text-[#ffb347]"
-                                        />
-                                    ))}
+                                <div>
+                                    <h4 className="text-2xl font-bold text-[#4b2e2e] mb-1 font-londrina-solid tracking-wider">
+                                        {story.name}
+                                    </h4>
+
+                                    {/* Stars */}
+                                    <div className="flex items-center gap-1">
+                                        {[...Array(5)].map((star, index) => (
+                                            <Star
+                                                key={index}
+                                                size={16}
+                                                className="fill-[#ffb347] text-[#ffb347]"
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <p className="text-[#6d5d5d] text-lg italic leading-relaxed">
-                            “{story.quote}”
-                        </p>
-                    </div>
-                ))}
-            </div>
+                            <p className="text-[#6d5d5d] text-lg italic leading-relaxed">
+                                “{story.quote}”
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </FadeUp>
         </section>
     );
 };

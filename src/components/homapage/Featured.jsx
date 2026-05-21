@@ -3,6 +3,8 @@ import PetCard from '../shared/PetCard';
 import { Button } from '@heroui/react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import AnimatedPetCard from '../animation/AnimatedPetCard';
+
 
 const Featured = async () => {
 
@@ -31,13 +33,13 @@ const Featured = async () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-12 mt-6'>
+                <AnimatedPetCard className='grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-12 mt-6'>
                     {
                         featuredPets.map((pet) => (
                             <PetCard key={pet._id} pet={pet} />
                         ))
                     }
-                </div>
+                </AnimatedPetCard>
             </div>
 
 

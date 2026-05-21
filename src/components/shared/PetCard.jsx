@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
 import { MapPin, Heart, CalendarDays } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const speciesEmoji = {
     Dog: "🐶",
@@ -21,6 +22,7 @@ const genderColor = {
     Female: "bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300",
 };
 
+
 const PetCard = ({ pet }) => {
 
     const router = useRouter();
@@ -36,7 +38,13 @@ const PetCard = ({ pet }) => {
     };
 
     return (
-        <div className="group bg-white dark:bg-[#2A1F1A] border border-[#EAAC8E]/30 dark:border-[#3A2E28] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+        <motion.div
+            className="group bg-white dark:bg-[#2A1F1A] border border-[#EAAC8E]/30 dark:border-[#3A2E28] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col"
+            variants={{
+                hidden: { opacity: 0, y: 25 },
+                visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.4 }}>
 
             <div className="relative h-52 overflow-hidden">
                 <Image
@@ -115,7 +123,7 @@ const PetCard = ({ pet }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

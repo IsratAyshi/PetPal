@@ -1,6 +1,7 @@
 import React from 'react';
 import { Accordion } from "@heroui/react";
 import { ChevronDown, CheckCheckIcon } from "lucide-react";
+import FadeUp from '../animation/FadeUp';
 
 const faqItems = [
     {
@@ -35,35 +36,39 @@ const Faq = () => {
         <section id="faq" className="py-24 px-6 lg:px-12 bg-[#FFF6E5] dark:bg-[#1E1A17]">
             <div className="max-w-4xl mx-auto">
                 {/* Heading */}
-                <div className="text-center mb-14">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-4">
-                        Frequently Asked Questions
-                    </h2>
+                <FadeUp>
+                    <div className="text-center mb-14">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-[#4b2e2e] dark:text-[#FFE8D6] mb-4">
+                            Frequently Asked Questions
+                        </h2>
 
-                    <p className="text-[#6d5d5d] dark:text-[#F0CAA5]">
-                        Everything you need to know before welcoming a new companion home.
-                    </p>
-                </div>
+                        <p className="text-[#6d5d5d] dark:text-[#F0CAA5]">
+                            Everything you need to know before welcoming a new companion home.
+                        </p>
+                    </div>
+                </FadeUp>
 
                 {/* Accordion */}
-                <Accordion className="w-full">
-                    {faqItems.map((item, index) => (
-                        <Accordion.Item key={index}>
-                            <Accordion.Heading>
-                                <Accordion.Trigger>
-                                    <CheckCheckIcon size={20} className="mr-2" />
-                                    {item.title}
-                                    <Accordion.Indicator>
-                                        <ChevronDown />
-                                    </Accordion.Indicator>
-                                </Accordion.Trigger>
-                            </Accordion.Heading>
-                            <Accordion.Panel>
-                                <Accordion.Body>{item.content}</Accordion.Body>
-                            </Accordion.Panel>
-                        </Accordion.Item>
-                    ))}
-                </Accordion>
+                <FadeUp delay={0.1}>
+                    <Accordion className="w-full">
+                        {faqItems.map((item, index) => (
+                            <Accordion.Item key={index}>
+                                <Accordion.Heading>
+                                    <Accordion.Trigger>
+                                        <CheckCheckIcon size={20} className="mr-2" />
+                                        {item.title}
+                                        <Accordion.Indicator>
+                                            <ChevronDown />
+                                        </Accordion.Indicator>
+                                    </Accordion.Trigger>
+                                </Accordion.Heading>
+                                <Accordion.Panel>
+                                    <Accordion.Body>{item.content}</Accordion.Body>
+                                </Accordion.Panel>
+                            </Accordion.Item>
+                        ))}
+                    </Accordion>
+                </FadeUp>
             </div>
         </section>
     );
